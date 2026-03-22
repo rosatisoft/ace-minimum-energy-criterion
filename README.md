@@ -4,6 +4,11 @@
 
 ACE is a model-agnostic framework that stabilizes language generation by modeling it as a **minimum-energy optimization problem under semantic constraints**.
 
+This repository contains the mathematical and experimental implementation of ACE.
+
+For the full framework and infrastructure layer, see:
+https://github.com/rosatisoft/axiomatic-criterion-engine
+
 ---
 
 ## 🧠 Core Idea
@@ -62,9 +67,19 @@ ACE-20 evaluates models across:
 
 ---
 
+##Demo
+
+See the notebook:
+
+/notebooks/ace_semantic_convergence.ipynb
+
+## 🔬 Run the demo
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rosatisoft/ace-minimum-energy-criterion/blob/main/notebooks/ace_semantic_convergence.ipynb)
+
 ## 📄 Paper
 
-See `/docs/ACE-paper.pdf`
+See `/docs/ACE-Minimum-Energy-Criterion.pdf`
 
 ---
 
