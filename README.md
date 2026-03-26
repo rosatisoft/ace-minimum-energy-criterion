@@ -53,6 +53,23 @@ from ace.core.scorer import ACEScorer
 
 scorer = ACEScorer()
 
+##Demo
+
+See the notebook:
+
+/notebooks/ace_semantic_convergence.ipynb
+
+🔬 Run the demo
+Open In Colab
+
+📄 Paper
+See /docs/ACE-Minimum-Energy-Criterion.pdf
+
+📜 License
+© 2026 Ernesto Rosati Beristain
+Licensed under CC-BY 4.0
+
+
 score = scorer.score_candidate(
     prompt_embedding=np.array([...]),
     axiom_embeddings=[np.array([...])],
