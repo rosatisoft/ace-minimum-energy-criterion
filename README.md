@@ -225,6 +225,7 @@ Example output:
   },
   "reason": "A candidate aligns sufficiently with the reference subspace."
 }
+```
 
 Repository Structure
 ace/
