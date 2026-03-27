@@ -154,6 +154,8 @@ ace/
 │   ├── scorer.py
 │   └── subspace.py
 └── types.py
+docs/
+├── THEORETICAL_FRAMEWORK.md
 
 examples/
 ├── basic_origin_cost.py
