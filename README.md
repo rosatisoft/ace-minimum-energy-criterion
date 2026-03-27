@@ -128,7 +128,7 @@ flowchart TD
     J -->|low drift| K1[Answer]
     J -->|underdetermined| K2[Clarify]
     J -->|high drift| K3[Abstain]
-
+```
 ## ACE Architecture
 
 ```mermaid
@@ -173,7 +173,6 @@ flowchart LR
     DEC --> CLR
     DEC --> ABS
 
-```markdown
 ACE introduces a semantic decision layer between probabilistic generation and final output delivery.
 
 Instead of accepting the first response, ACE evaluates candidate outputs against a reference semantic subspace built from prompt, axioms, and contextual knowledge.
