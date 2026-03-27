@@ -172,6 +172,7 @@ flowchart LR
     DEC --> ANS
     DEC --> CLR
     DEC --> ABS
+```
 
 ACE introduces a semantic decision layer between probabilistic generation and final output delivery.
 
