@@ -129,8 +129,6 @@ flowchart TD
     J -->|underdetermined| K2[Clarify]
     J -->|high drift| K3[Abstain]
 
-
-```markdown
 ## ACE Architecture
 
 ```mermaid
