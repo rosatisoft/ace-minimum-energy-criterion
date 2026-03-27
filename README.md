@@ -104,6 +104,84 @@ Evaluation and decision become deterministic.
 
 ---
 
+## ACE Decision Pipeline
+
+```mermaid
+flowchart TD
+    A[User Prompt] --> B[LLM Generation<br/>multiple candidates]
+    B --> C[Candidate Responses]
+    A --> D[Prompt]
+    A2[Axioms] --> E[Reference Context]
+    A3[Contextual Knowledge] --> E[Reference Context]
+    D --> E
+    E --> F[Embedding Projection]
+    C --> G[Candidate Embeddings]
+    F --> H[Reference Subspace S]
+    G --> I[Origin Cost Evaluation<br/>O(z) = ||Vz - ΠS(Vz)||²]
+    H --> I
+    I --> J{Decision Layer}
+    J -->|low drift| K[Answer]
+    J -->|underdetermined| L[Clarify]
+    J -->|high drift| M[Abstain]
+
+```markdown
+## ACE Architecture
+
+```mermaid
+flowchart LR
+    subgraph INPUT[Context Construction]
+        P[Prompt]
+        AX[Axioms]
+        K[Contextual Knowledge]
+    end
+
+    subgraph GEN[Generation]
+        LLM[Language Model]
+        CR[Candidate Responses]
+    end
+
+    subgraph ACE[Axiomatic Criterion Engine]
+        EMB[Embedding Projection]
+        SUB[Reference Subspace S]
+        OZ[Origin Cost O(z)]
+        DEC{Decision}
+    end
+
+    subgraph OUT[Response Behavior]
+        ANS[Answer]
+        CLR[Clarify]
+        ABS[Abstain]
+    end
+
+    P --> LLM
+    LLM --> CR
+
+    P --> EMB
+    AX --> EMB
+    K --> EMB
+
+    EMB --> SUB
+    CR --> OZ
+    SUB --> OZ
+    OZ --> DEC
+
+    DEC --> ANS
+    DEC --> CLR
+    DEC --> ABS
+
+```markdown
+ACE introduces a semantic decision layer between probabilistic generation and final output delivery.
+
+Instead of accepting the first response, ACE evaluates candidate outputs against a reference semantic subspace built from prompt, axioms, and contextual knowledge.
+
+This enables three possible outcomes:
+
+- **Answer** when alignment is sufficient
+- **Clarify** when the semantic space is underdefined
+- **Abstain** when no candidate satisfies the criterion
+
+---
+
 ## Quick Example
 
 ```python
@@ -184,82 +262,6 @@ a practical path toward semantic middleware for LLM systems
 The next implementation layer is the ACE Deep Pipeline:
 
 LLM → candidate responses → ACE scoring / decision → answer | clarify | abstain
-
-## ACE Decision Pipeline
-
-```mermaid
-flowchart TD
-    A[User Prompt] --> B[LLM Generation<br/>multiple candidates]
-    B --> C[Candidate Responses]
-    A --> D[Prompt]
-    A2[Axioms] --> E[Reference Context]
-    A3[Contextual Knowledge] --> E[Reference Context]
-    D --> E
-    E --> F[Embedding Projection]
-    C --> G[Candidate Embeddings]
-    F --> H[Reference Subspace S]
-    G --> I[Origin Cost Evaluation<br/>O(z) = ||Vz - ΠS(Vz)||²]
-    H --> I
-    I --> J{Decision Layer}
-    J -->|low drift| K[Answer]
-    J -->|underdetermined| L[Clarify]
-    J -->|high drift| M[Abstain]
-
-```markdown
-## ACE Architecture
-
-```mermaid
-flowchart LR
-    subgraph INPUT[Context Construction]
-        P[Prompt]
-        AX[Axioms]
-        K[Contextual Knowledge]
-    end
-
-    subgraph GEN[Generation]
-        LLM[Language Model]
-        CR[Candidate Responses]
-    end
-
-    subgraph ACE[Axiomatic Criterion Engine]
-        EMB[Embedding Projection]
-        SUB[Reference Subspace S]
-        OZ[Origin Cost O(z)]
-        DEC{Decision}
-    end
-
-    subgraph OUT[Response Behavior]
-        ANS[Answer]
-        CLR[Clarify]
-        ABS[Abstain]
-    end
-
-    P --> LLM
-    LLM --> CR
-
-    P --> EMB
-    AX --> EMB
-    K --> EMB
-
-    EMB --> SUB
-    CR --> OZ
-    SUB --> OZ
-    OZ --> DEC
-
-    DEC --> ANS
-    DEC --> CLR
-    DEC --> ABS
-
-```markdown
-ACE introduces a semantic decision layer between probabilistic generation and final output delivery.
-
-Instead of accepting the first response, ACE evaluates candidate outputs against a reference semantic subspace built from prompt, axioms, and contextual knowledge.
-
-This enables three possible outcomes:
-
-- **Answer** when alignment is sufficient
-- **Clarify** when the semantic space is underdefined
-- **Abstain** when no candidate satisfies the criterion
 
 Scope
 
