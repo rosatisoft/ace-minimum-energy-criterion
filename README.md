@@ -108,46 +108,52 @@ Evaluation and decision become deterministic.
 
 ```mermaid
 flowchart TD
-    A[User Prompt] --> B[LLM Generation<br/>multiple candidates]
+    A[User Prompt] --> B[LLM Generation]
     B --> C[Candidate Responses]
+
     A --> D[Prompt]
-    A2[Axioms] --> E[Reference Context]
-    A3[Contextual Knowledge] --> E[Reference Context]
+    AX[Axioms] --> E[Reference Context]
+    K[Contextual Knowledge] --> E
     D --> E
+
     E --> F[Embedding Projection]
     C --> G[Candidate Embeddings]
-    F --> H[Reference Subspace S]
-    G --> I[Origin Cost Evaluation<br/>O(z) = ||Vz - ΠS(Vz)||²]
+
+    F --> H[Reference Subspace]
+    G --> I[Origin Cost Evaluation]
+
     H --> I
     I --> J{Decision Layer}
-    J -->|low drift| K[Answer]
-    J -->|underdetermined| L[Clarify]
-    J -->|high drift| M[Abstain]
+
+    J -->|low drift| K1[Answer]
+    J -->|underdetermined| K2[Clarify]
+    J -->|high drift| K3[Abstain]
+
 
 ```markdown
 ## ACE Architecture
 
 ```mermaid
 flowchart LR
-    subgraph INPUT[Context Construction]
+    subgraph Context
         P[Prompt]
         AX[Axioms]
-        K[Contextual Knowledge]
+        K[Knowledge]
     end
 
-    subgraph GEN[Generation]
+    subgraph Generation
         LLM[Language Model]
         CR[Candidate Responses]
     end
 
-    subgraph ACE[Axiomatic Criterion Engine]
-        EMB[Embedding Projection]
-        SUB[Reference Subspace S]
-        OZ[Origin Cost O(z)]
+    subgraph ACE
+        EMB[Embeddings]
+        SUB[Semantic Subspace]
+        COST[Origin Cost]
         DEC{Decision}
     end
 
-    subgraph OUT[Response Behavior]
+    subgraph Output
         ANS[Answer]
         CLR[Clarify]
         ABS[Abstain]
@@ -161,9 +167,9 @@ flowchart LR
     K --> EMB
 
     EMB --> SUB
-    CR --> OZ
-    SUB --> OZ
-    OZ --> DEC
+    CR --> COST
+    SUB --> COST
+    COST --> DEC
 
     DEC --> ANS
     DEC --> CLR
