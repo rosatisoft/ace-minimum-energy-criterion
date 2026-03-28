@@ -4,6 +4,8 @@
 
 ACE is a model-agnostic framework that stabilizes language generation by modeling it as a **minimum-energy optimization problem under semantic constraints**.
 
+This repository implements the origin cost component of the ACE framework.
+
 It introduces a deterministic scoring layer that evaluates candidate responses based on their **semantic alignment with a defined origin**.
 
 📄 DOI (paper): https://doi.org/10.5281/zenodo.19162999  
