@@ -46,25 +46,26 @@ Where:
 - high O(z) → drift, hallucination, semantic escape  
 
 ---
+## Repository Structure
+
 ace-minimum-energy-criterion
 │
-├─ notebooks/                         ← real research and experiments
+├─ notebooks/                         ← real research and experimental work
 │  ├─ ace_semantic_convergence.ipynb
 │  ├─ ace_semantic_convergence_V1.0.ipynb
 │  ├─ ace_semantic_test.ipynb
 │  └─ ace_marble_rolling_animation.ipynb
 │
 ├─ ace/                               ← main Python package
-│  │
-│  ├─ __init__.py                     ← packet entry point
-│  ├─ scorer.py                       ← decision layer (pipeline with embeddings)
-│  ├─ types.py                        ← dataclasses and shared structures
+│  ├─ __init__.py                     ← package entry point
+│  ├─ scorer.py                       ← decision layer (embedding-based pipeline)
+│  ├─ types.py                        ← shared dataclasses and structures
 │  │
 │  └─ core/                           ← mathematical core of ACE
 │     ├─ __init__.py
-│     ├─ core_scorer.py               ← minimum scoring based on origin cost
+│     ├─ core_scorer.py               ← minimal scoring based on origin cost
 │     ├─ subspace.py                  ← construction of the semantic subspace
-│     └─ origin_cost.py               ← calculation of origin cost
+│     └─ origin_cost.py               ← computation of the origin cost
 │
 ├─ examples/                          ← minimal usage examples
 │  └─ basic_origin_cost.py
@@ -82,9 +83,9 @@ ace-minimum-energy-criterion
 ├─ ACE-20.json                        ← experimental dataset
 │
 ├─ README.md                          ← main project documentation
-├─ README_V1.0.md                     ← previous version of README
+├─ README_V1.0.md                     ← previous version of the README
 │
-├─ pyproject.toml                     ← package configuration
+├─ pyproject.toml                     ← Python package configuration
 ├─ requirements.txt                   ← additional dependencies
 │
 └─ LICENSE
