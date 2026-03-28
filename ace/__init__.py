@@ -1,3 +1,3 @@
-from ace.scorer import ACEScorer
+from ace.core.scorer import ACEScorer
 
 __all__ = ["ACEScorer"]
