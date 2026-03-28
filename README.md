@@ -46,6 +46,48 @@ Where:
 - high O(z) → drift, hallucination, semantic escape  
 
 ---
+ace-minimum-energy-criterion
+│
+├─ notebooks/                         ← real research and experiments
+│  ├─ ace_semantic_convergence.ipynb
+│  ├─ ace_semantic_convergence_V1.0.ipynb
+│  ├─ ace_semantic_test.ipynb
+│  └─ ace_marble_rolling_animation.ipynb
+│
+├─ ace/                               ← main Python package
+│  │
+│  ├─ __init__.py                     ← packet entry point
+│  ├─ scorer.py                       ← decision layer (pipeline with embeddings)
+│  ├─ types.py                        ← dataclasses and shared structures
+│  │
+│  └─ core/                           ← mathematical core of ACE
+│     ├─ __init__.py
+│     ├─ core_scorer.py               ← minimum scoring based on origin cost
+│     ├─ subspace.py                  ← construction of the semantic subspace
+│     └─ origin_cost.py               ← calculation of origin cost
+│
+├─ examples/                          ← minimal usage examples
+│  └─ basic_origin_cost.py
+│
+├─ tests/                             ← unit tests
+│  └─ test_origin_cost.py
+│
+├─ docs/                              ← documentation and theoretical material
+│  ├─ ACE-Minimum-Energy-Criterion.pdf
+│  ├─ ACE_ARCHITECTURE.md
+│  ├─ ACE_DIAGRAM.md
+│  ├─ ACE_PIPELINE_DIAGRAM.md
+│  └─ THEORETICAL_FRAMEWORK.md
+│
+├─ ACE-20.json                        ← experimental dataset
+│
+├─ README.md                          ← main project documentation
+├─ README_V1.0.md                     ← previous version of README
+│
+├─ pyproject.toml                     ← package configuration
+├─ requirements.txt                   ← additional dependencies
+│
+└─ LICENSE
 
 ## ⚙️ Quick Example
 
