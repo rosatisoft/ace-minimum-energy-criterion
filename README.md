@@ -8,6 +8,9 @@ This repository implements the origin cost component of the ACE framework.
 
 It introduces a deterministic scoring layer that evaluates candidate responses based on their **semantic alignment with a defined origin**.
 
+ACE does not attempt to represent reality in its entirety.
+It introduces a criterion that constrains semantic exploration, reducing entropy and improving stability in language generation.
+
 📄 DOI (paper): https://doi.org/10.5281/zenodo.19162999  
 📦 Full framework: https://github.com/rosatisoft/axiomatic-criterion-engine  
 
