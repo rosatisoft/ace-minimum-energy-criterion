@@ -3,7 +3,7 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "axiomatic-criterion-engine"
+name = "ace-minimum-energy-criterion"
 version = "0.1.0a1"
 description = "ACE alpha implementation for Origin Cost scoring and deep semantic convergence."
 readme = "README.md"
