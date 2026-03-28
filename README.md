@@ -46,6 +46,7 @@ Where:
 - high O(z) → drift, hallucination, semantic escape  
 
 ---
+```
 ## Repository Structure
 
 ace-minimum-energy-criterion
@@ -89,7 +90,7 @@ ace-minimum-energy-criterion
 ├─ requirements.txt                   ← additional dependencies
 │
 └─ LICENSE
-
+```
 ## ⚙️ Quick Example
 
 ```python
